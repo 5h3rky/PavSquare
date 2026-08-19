@@ -94,14 +94,15 @@ header.nav.solid {
   padding: 16px clamp(20px, 5vw, 64px); border-bottom: 1px solid var(--line);
 }
 .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.brand-logo { height: 46px; width: auto; object-fit: contain; }
 .brand-word {
   font-family: 'Fraunces', serif; font-size: 1.28rem; letter-spacing: .04em; color: var(--ivory);
   display: flex; flex-direction: column; line-height: 1.05;
 }
 .brand-word b { font-style: italic; color: var(--gold); font-weight: 500; }
 .brand-word small { font-size: .58rem; letter-spacing: .38em; text-transform: uppercase; color: var(--stone); margin-top: 3px; }
-.brand-divider { width: 1px; height: 26px; background: var(--line); display: inline-block; }
-.brand-agency img { height: 20px; width: auto; object-fit: contain; opacity: .9; }
+.brand-divider { width: 1px; height: 40px; background: var(--line); display: inline-block; }
+.brand-agency img { height: 46px; width: auto; object-fit: contain; opacity: .9; }
 
 nav.links { display: flex; gap: 34px; align-items: center; }
 nav.links a {
@@ -116,9 +117,9 @@ nav.links a:hover { color: var(--ivory); }
 nav.links a:hover::after { width: 100%; }
 
 .nav-cta {
-  border: 1px solid var(--gold); color: var(--gold) !important; padding: 10px 22px; border-radius: 2px;
+  border: 1px solid var(--gold); color: var(--gold) !important; padding: 10px 22px !important; border-radius: 2px;
   font-size: .72rem !important; letter-spacing: .14em !important; transition: all .35s var(--ease);
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: center; text-align: center;
 }
 .nav-cta::after { display: none; }
 .nav-cta:hover { background: var(--gold); color: var(--ink) !important; transform: translateY(-2px); }
@@ -256,14 +257,8 @@ section { position: relative; padding: clamp(70px, 10vw, 130px) 0; }
 .trifecta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
 .tri-card {
   border: 1px solid var(--line); border-radius: 6px; padding: 36px 28px; background: var(--panel);
-  position: relative; overflow: hidden; transition: transform .4s var(--ease), border-color .4s;
+  position: relative; overflow: hidden;
 }
-.tri-card::before {
-  content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .5s;
-  background: radial-gradient(60% 60% at 20% 0%, rgba(208,164,92,.14), transparent 70%);
-}
-.tri-card:hover { transform: translateY(-6px); border-color: rgba(208,164,92,.4); }
-.tri-card:hover::before { opacity: 1; }
 .tri-num { font-family: 'Fraunces', serif; font-style: italic; color: var(--gold); font-size: 2.4rem; position: relative; }
 .tri-card h3 { margin-top: 18px; font-size: 1.3rem; font-weight: 400; position: relative; }
 .tri-card p { color: var(--ivory-dim); margin-top: 12px; font-size: .9rem; position: relative; }
@@ -283,19 +278,15 @@ section { position: relative; padding: clamp(70px, 10vw, 130px) 0; }
 .flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .flow-card {
   border: 1px solid var(--line); border-radius: 6px; padding: 24px 20px; background: var(--panel-2);
-  transition: transform .35s var(--ease), border-color .35s;
 }
-.flow-card:hover { transform: translateY(-4px); border-color: var(--gold); }
 .flow-idx { font-family: 'Fraunces', serif; font-style: italic; color: var(--gold); font-size: 1.1rem; }
 .flow-card p { color: var(--ivory-dim); font-size: .86rem; margin-top: 10px; }
 
 .compare-strip { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
 .compare-chip {
   flex: 1; min-width: 160px; text-align: center; padding: 18px 12px; border-radius: 6px; border: 1px solid var(--line);
-  background: var(--panel-2); transition: transform .3s var(--ease);
+  background: var(--panel-2);
 }
-.compare-chip.active { border-color: var(--gold); background: linear-gradient(160deg, rgba(208,164,92,.14), transparent); }
-.compare-chip:hover { transform: translateY(-3px); }
 .compare-chip .cc-name { font-family: 'Fraunces', serif; font-size: 1rem; color: var(--ivory); }
 .compare-chip .cc-tag { font-size: .68rem; color: var(--stone); margin-top: 6px; display: block; }
 
@@ -360,16 +351,12 @@ section { position: relative; padding: clamp(70px, 10vw, 130px) 0; }
 .unit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .unit-card {
   border: 1px solid var(--line); border-radius: 6px; padding: 22px 20px; background: var(--panel);
-  transition: transform .35s var(--ease), border-color .35s; cursor: default;
+  cursor: default;
 }
-.unit-card:hover { transform: translateY(-5px); border-color: var(--gold); }
 .unit-card .uc-type { font-family: 'Fraunces', serif; font-style: italic; color: var(--gold); font-size: 1.3rem; }
 .unit-card .uc-size { font-size: 1.5rem; margin-top: 10px; color: var(--ivory); font-family: 'Fraunces', serif; }
 .unit-card .uc-size small { font-size: .68rem; color: var(--stone); font-family: 'Inter', sans-serif; display: block; margin-top: 2px; }
-.unit-card .uc-bar { height: 4px; border-radius: 4px; background: var(--line); margin: 14px 0; overflow: hidden; }
-.unit-card .uc-bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--sky), var(--gold)); border-radius: 4px; width: 0%; transition: width 1.1s var(--ease); }
-.unit-card.in .uc-bar i { width: var(--pct); }
-.unit-card .uc-spec { font-size: .8rem; color: var(--ivory-dim); }
+.unit-card .uc-spec { font-size: .8rem; color: var(--ivory-dim); margin-top: 14px; }
 
 .fp-block { margin-top: 40px; border-top: 1px solid var(--line); padding-top: 34px; }
 .fp-title { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
@@ -416,9 +403,7 @@ section { position: relative; padding: clamp(70px, 10vw, 130px) 0; }
 .amenity-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .amenity-card {
   border: 1px solid var(--line); border-radius: 6px; padding: 26px 22px; background: var(--panel-2);
-  transition: transform .35s var(--ease), border-color .35s;
 }
-.amenity-card:hover { transform: translateY(-5px); border-color: var(--gold); }
 .amenity-icon {
   width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--gold); display: flex; align-items: center;
   justify-content: center; color: var(--gold); font-size: 1.1rem; margin-bottom: 16px;
