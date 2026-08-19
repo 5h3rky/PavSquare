@@ -149,4 +149,7 @@ form.addEventListener('submit', function (e) {
 
   fields.style.display = 'none';
   success.classList.add('show');
+
+  const basePath = window.location.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/');
+  window.history.pushState({}, '', basePath + 'thankyou');
 });
