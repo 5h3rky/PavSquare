@@ -113,6 +113,7 @@ document.querySelectorAll('.compare-chip').forEach(chip => {
 });
 
 /* ---------- Lead form ---------- */
+const WEB3FORMS_ACCESS_KEY = 'c8878a10-8b2c-4b76-b356-bc29c6896248';
 const form = document.getElementById('leadForm');
 const fields = document.getElementById('formFields');
 const success = document.getElementById('formSuccess');
@@ -142,11 +143,32 @@ form.addEventListener('submit', function (e) {
 
   if (!valid) return;
 
-  waLink.href = `https://wa.me/60172381528?text=${encodeURIComponent(
+  waLink.href = `https://wa.me/60126786593?text=${encodeURIComponent(
     `Hi Sherwin! I'm interested in Pavilion Square, Bukit Bintang.\n\nInterest: ${property}\nName: ${name}\nPhone: ${phone}\nEmail: ${email}` +
     (message ? `\nMessage: ${message}` : '')
   )}`;
 
+  const botcheck = document.querySelector('#leadForm [name="botcheck"]');
+  if (!botcheck.checked) {
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: 'New Pavilion Square Enquiry',
+        from_name: 'Pavilion Square Website',
+        property,
+        name,
+        phone,
+        email,
+        message
+      })
+    }).catch(err => console.error('Web3Forms submit failed:', err));
+  }
+
   fields.style.display = 'none';
   success.classList.add('show');
+
+  const basePath = window.location.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/');
+  window.history.pushState({}, '', basePath + 'thankyou');
 });
