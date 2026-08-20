@@ -217,6 +217,19 @@ nav.links a:hover::after { width: 100%; }
 .marquee-track span::after { content: '✦'; font-family: sans-serif; font-style: normal; position: absolute; right: -4px; top: 2px; font-size: .7rem; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+/* ===== BUKIT BINTANG SLIDER ===== */
+.bb-slider-sec { padding-bottom: clamp(50px, 7vw, 90px); }
+.bb-slider { overflow: hidden; margin-top: 44px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.bb-slider-track { display: flex; gap: 20px; width: max-content; animation: bb-slide 40s linear infinite; }
+.bb-slider-track img {
+  height: 340px; width: 260px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line);
+  flex: none;
+}
+@keyframes bb-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (max-width:720px) {
+  .bb-slider-track img { height: 260px; width: 190px; }
+}
+
 /* ===== SECTION GENERIC ===== */
 section { position: relative; padding: clamp(70px, 10vw, 130px) 0; }
 .section-head { max-width: 660px; margin-bottom: 56px; }
